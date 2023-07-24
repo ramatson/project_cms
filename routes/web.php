@@ -1,6 +1,12 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
+use App\Models\User;
+use App\Models\Role;
+
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -20,3 +26,14 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('/read', function(){
+    $user = User::findOrFail(1);
+    return dd($user->role);
+});
+
+Route::get('/admin', function(){
+    return view('admin.index');
+});
+
+Route::resource('/admin/users', 'App\Http\Controllers\AdminUsersController'); 
