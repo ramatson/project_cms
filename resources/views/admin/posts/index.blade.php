@@ -27,7 +27,7 @@
             <td>{{$post->id}}</td>
             <td><img height="100" src="{{$post->photo ? $post->photo->file : 'http://placehold.it/400x400'}}" alt="" class="img-responsive, img-rounded"></td>
             <td>{{$post->user->name}}</td>
-            <td>{{$post->category_id}}</td>
+            <td>{{$post->category ? $post->category->name :"Not Found" }}</td>
             <td>{{$post->title}}</td>
             <td>{{$post->body}}</td>
             <td>{{$post->created_at->diffForHumans()}}</td>
